@@ -7,6 +7,7 @@ alias l = ls
 alias lg = lazygit
 
 $env.config.show_banner = false
+$env.config.shell_integration.osc133 = false
 
 ----------------------------------------------------------------------
 # 1. CROSS-PLATFORM PATHS & DIRECTORIES
@@ -53,15 +54,15 @@ $env.STARSHIP_SHELL = "nu"
 ----------------------------------------------------------------------
 # 3. ENVIRONMENT SOURCES (CROSS-PLATFORM SAFE)
 ----------------------------------------------------------------------
-let is_windows = $nu.os-info.name == "windows"
-
-# Since `source` requires a parse-time constant or literal string, 
-# we use try/catch blocks which gracefully skip if the file doesn't exist.
-if $is_windows {
-    try { source ("~/.cargo/env.nu" | path expand) }
-} else {
-    try { source ~/.cargo/env.nu }
-}
+# let is_windows = $nu.os-info.name == "windows"
+#
+# # Since `source` requires a parse-time constant or literal string, 
+# # we use try/catch blocks which gracefully skip if the file doesn't exist.
+# if $is_windows {
+#     try { source ("~/.cargo/env.nu" | path expand) }
+# } else {
+#     try { source ~/.cargo/env.nu }
+# }
 
 ----------------------------------------------------------------------
 # 4. CUSTOM COMMANDS
@@ -93,3 +94,4 @@ $env.PROMPT_INDICATOR = ""
 $env.PROMPT_INDICATOR_VI_INSERT = ": "
 $env.PROMPT_INDICATOR_VI_NORMAL = "〉"
 $env.PROMPT_MULTILINE_INDICATOR = "::: "
+
